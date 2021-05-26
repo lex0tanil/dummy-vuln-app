@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag lex0tanil/dummy-vuln-app:latest
 
     - name: Sysdig Secure Inline Scan
       id: scan
-      uses: sysdiglabs/scan-action@v3
+      uses: sysdiglabs/scan-action@v3.0.1
       with:
         # Tag of the image to analyse
         image-tag: "lex0tanil/dummy-vuln-app:latest"
